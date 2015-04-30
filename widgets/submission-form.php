@@ -60,21 +60,6 @@ class CAHNRS_Kudos_Submission_Widget extends WP_Widget {
 			<p><label for="kudo-nominee-content">Please describe why you would like to recognize this person. <span class="required">*</span></label><br />
 			<textarea id="kudo-nominee-content" name="kudo-nominee-content"><?php echo ( isset( $_POST['kudo-nominee-content'] ) ? stripslashes( wp_kses_post( $_POST['kudo-nominee-content'] ) ) : '' ); ?></textarea></p>
 
-			<!--<p><label for="kudo-nominee-category">What would you like to recognize this person for?</label><br />
-			<select id="kudo-nominee-category" name="kudo-nominee-category">
-				<option value="">Select</option>
-				<?php
-					$kudos_categories = get_terms( 'kudo_categories', 'hide_empty=0' );
-					if ( ! empty( $kudos_categories ) && ! is_wp_error( $kudos_categories ) ) :
-						foreach ( $kudos_categories as $kudos_category ) :
-						?>
-							<option value="<?php echo esc_attr( $kudos_category->term_id ); ?>"<?php echo ( isset( $_POST['kudo-nominee-category'] ) && esc_attr( $kudos_category->term_id ) === $_POST['kudo-nominee-category'] ? ' selected="selected"' : '' ); ?>><?php echo esc_html( $kudos_category->name ); ?></option>
-						<?php
-						endforeach;
-					endif;
-				?>
-			</select></p>-->
-
 			<p class="kudos-marks">Select an icon to show with this kudo.<br />
 			<?php
 				$kudos_marks = get_terms( 'kudo_marks', 'hide_empty=0' );
@@ -83,10 +68,6 @@ class CAHNRS_Kudos_Submission_Widget extends WP_Widget {
 					?>
           	<input type="radio" id="<?php echo $kudos_mark->slug; ?>-radio" name="kudo-nominee-mark" value="<?php echo esc_attr( $kudos_mark->term_id ); ?>"<?php echo ( isset( $_POST['kudo-nominee-mark'] ) && esc_attr( $kudos_mark->term_id ) === $_POST['kudo-nominee-mark'] ? ' checked="checked"' : '' ); ?>>
             <label for="<?php echo $kudos_mark->slug; ?>-radio" class="kudo-marks-<?php echo $kudos_mark->slug; ?>"></label>
-						<!--<label style="background-image: url(<?php echo plugins_url( 'marks/grayscale/' . $kudos_mark->slug . '.png', dirname(__FILE__) ); ?>);">
-							<input type="radio" name="kudo-nominee-mark" value="<?php echo esc_attr( $kudos_mark->term_id ); ?>"<?php echo ( isset( $_POST['kudo-nominee-mark'] ) && esc_attr( $kudos_mark->term_id ) === $_POST['kudo-nominee-mark'] ? ' checked="checked"' : '' ); ?>>
-							<img src="<?php echo plugins_url( 'marks/' . $kudos_mark->slug . '.png', dirname(__FILE__) ); ?>" height="60" width="60" />
-						</label>-->
 					<?php
 					endforeach;
 				endif;

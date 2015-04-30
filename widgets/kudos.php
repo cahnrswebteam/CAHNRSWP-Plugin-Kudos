@@ -49,8 +49,7 @@ class CAHNRS_Kudos_Widget extends WP_Widget {
 			while ( $kudos_query->have_posts() ) {
 				$kudos_query->the_post();
 				$mark = wp_get_post_terms( $kudos_query->post->ID, 'kudo_marks', array( 'fields' => 'slugs' ) );
-				//$category = wp_get_post_terms( $kudos_query->post->ID, 'kudo_categories', array( 'fields' => 'names' ) );
-				echo '<li class="kudo-marks-' . $mark[0] . '"><strong>' . get_the_title() . '</strong>, ' . get_the_date( 'F j' )/* . ', ' . $category[0]*/;
+				echo '<li class="kudo-marks-' . $mark[0] . '"><strong>' . get_the_title() . '</strong>, ' . get_the_date( 'F j' );
 				if ( 'yes' !== get_post_meta( $kudos_query->post->ID, '_cahnrswp_kudo_sub_anonymous', true ) ) {
 					echo ' | ' . 'Submitted by ' . $sub_name = get_post_meta( $kudos_query->post->ID, '_cahnrswp_kudo_sub_name', true );
 				}
@@ -73,21 +72,7 @@ class CAHNRS_Kudos_Widget extends WP_Widget {
 	 * Back-end widget form.
 	 */
 	public function form( $instance ) {
-		/*$link = ! empty( $instance['link'] ) ? $instance['link'] : '';
-		?>
-		<label for="<?php echo $this->get_field_id( 'link' ); ?>">Submission form page URL</label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'link' ); ?>" name="<?php echo $this->get_field_name( 'link' ); ?>" type="text" value="<?php echo esc_attr( $link ); ?>">
-		</p>
-		<?php*/
-	}
-
-	/**
-	 * Sanitize widget form values as they are saved.
-	 */
-	public function update( $new_instance, $old_instance ) {
-		/*$instance = array();
-		$instance['link'] = ( ! empty( $new_instance['link'] ) ) ? strip_tags( $new_instance['link'] ) : '';
-		return $instance;*/
+		echo '<p>There are no options for this widget.</p>';
 	}
 
 }

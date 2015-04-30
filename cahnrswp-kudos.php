@@ -36,7 +36,6 @@ class CAHNRSWP_Kudos {
 		'_cahnrswp_kudo_nom_title',
 		'_cahnrswp_kudo_nom_dept',
 		'_cahnrswp_kudo_nom_email',
-		//'_cahnrswp_kudo_nom_location',
 		'_cahnrswp_kudo_sub_name',
 		'_cahnrswp_kudo_sub_title',
 		'_cahnrswp_kudo_sub_dept',
@@ -88,7 +87,6 @@ class CAHNRSWP_Kudos {
 				'author',
 			),
 			'taxonomies' => array(
-				//$this->cahnrs_kudos_categories,
 				$this->cahnrs_kudos_marks,
 			),
 			'has_archive' => true,
@@ -101,26 +99,6 @@ class CAHNRSWP_Kudos {
 	 * Register Kudos taxonomies.
 	 */
 	public function register_kudos_taxonomies() {
-		/*$category_args = array(
-			'labels'			 => array(
-				'name'					=> 'Categories',
-				'singular_name' => 'Category',
-				'search_items'	=> 'Search Categories',
-				'all_items'		 => 'All Categories',
-				'edit_item'		 => 'Edit Category',
-				'update_item'	 => 'Update Category',
-				'add_new_item'	=> 'Add New Category',
-				'new_item_name' => 'New Category Name',
-				'menu_name'		 => 'Categories',
-			),
-			'description'	=> 'CAHNRS Kudos categories',
-			'public'			 => true,
-			'hierarchical' => true,
-			'show_ui'			=> true,
-			'show_in_menu' => true,
-			'query_var'		=> $this->cahnrs_kudos_categories,
-		);
-		register_taxonomy( $this->cahnrs_kudos_categories, array( $this->cahnrs_kudos_post_type ), $category_args );*/
 		$mark_args = array(
 			'labels'						=> array(
 				'name'					=> 'Marks',
@@ -168,7 +146,6 @@ class CAHNRSWP_Kudos {
 		$nom_title = get_post_meta( $post->ID, '_cahnrswp_kudo_nom_title', true );
 		$nom_dept  = get_post_meta( $post->ID, '_cahnrswp_kudo_nom_dept', true );
 		$nom_email = get_post_meta( $post->ID, '_cahnrswp_kudo_nom_email', true );
-		//$nom_location = get_post_meta( $post->ID, '_cahnrswp_kudo_nom_location', true );
 		$sub_name  = get_post_meta( $post->ID, '_cahnrswp_kudo_sub_name', true );
 		$sub_title = get_post_meta( $post->ID, '_cahnrswp_kudo_sub_title', true );
 		$sub_dept  = get_post_meta( $post->ID, '_cahnrswp_kudo_sub_dept', true );
@@ -183,8 +160,6 @@ class CAHNRSWP_Kudos {
 		<input type="text" id="_cahnrswp_kudo_nom_dept" name="_cahnrswp_kudo_nom_dept" value="<?php echo esc_attr( $nom_dept ); ?>" class="widefat" /></p>
 		<p style="float: left; padding-right: 1%; width: 49%;"><label for="_cahnrswp_kudo_nom_email">Email</label><br />
 		<input type="text" id="_cahnrswp_kudo_nom_email" name="_cahnrswp_kudo_nom_email" value="<?php echo esc_attr( $nom_email ); ?>" class="widefat" /></p>
-		<!--<p style="float: left; padding-left: 1%; width: 49%;"><label for="_cahnrswp_kudo_nom_location">Campus Zip or Mailing Address</label><br />
-		<input type="text" id="_cahnrswp_kudo_nom_location" name="_cahnrswp_kudo_nom_location" value="<?php echo esc_attr( $nom_location ); ?>" class="widefat" /></p>-->
 		<br style="clear:both;" />
 		<p style="margin-bottom: 0;"><strong>Submitter</strong></p>
 		<p style="float: left; padding-right: 1%; width: 49%;"><label for="_cahnrswp_kudo_sub_name">Name</label><br />
