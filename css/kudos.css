@@ -1,0 +1,86 @@
+.widget_CAHNRS_Kudos_Widget,
+.cahnrs-kudos-archive {
+	padding: 0 0 2em;
+}
+.cahnrs-kudos-banner {
+	display: block;
+	width: 100%;
+}
+.kudos {
+	box-sizing: border-box;
+	float: left;
+	padding: 2em 1em 0 2em;
+	width: 100%;
+	margin-right: -240px;
+}
+.widget_cahnrs_kudos_sidebar {
+	box-sizing: border-box;
+	float: right;
+	padding: 2em 2em 0 1em;
+	width: 240px;
+}
+.archive-header h2 {
+	padding: 0 0 1rem 0;
+}
+.kudos article h3 {
+	display: inline;
+	font-size: 14px;
+}
+.kudo-list {
+	margin-right: 240px;
+	padding: 0;
+}
+.kudo-list li,
+.kudos article {
+	background-position: top left;
+	background-repeat: no-repeat;
+	background-size: 60px;
+	min-height: 60px;
+	padding: 0 0 1rem 74px;
+}
+.kudo-list li {
+	list-style: none;
+}
+.kudos article {
+	background-color: transparent;
+	margin: 0;
+}
+.kudo-list li:nth-child(n+4) {
+	display: none !important;
+}
+.kudo-list .kudo-marks-apple { background-image: url(../marks/apple.png); }
+.kudo-list .kudo-marks-awesome { background-image: url(../marks/awesome.png); }
+.kudo-list .kudo-marks-badge { background-image: url(../marks/badge.png); }
+.kudo-list .kudo-marks-bee { background-image: url(../marks/bee.png); }
+.kudo-list .kudo-marks-bouquet { background-image: url(../marks/bouquet.png); }
+.kudo-list .kudo-marks-coug-spirit { background-image: url(../marks/coug-spirit.png); }
+.kudo-list .kudo-marks-cougar-gold { background-image: url(../marks/cougar-gold.png); }
+.kudo-list .kudo-marks-cow { background-image: url(../marks/cow.png); }
+.kudo-list .kudo-marks-crown { background-image: url(../marks/crown.png); }
+.kudo-list .kudo-marks-fireworks { background-image: url(../marks/fireworks.png); }
+.kudo-list .kudo-marks-football { background-image: url(../marks/football.png); }
+.kudo-list .kudo-marks-gift { background-image: url(../marks/gift.png); }
+.kudo-list .kudo-marks-great-job { background-image: url(../marks/great-job.png); }
+.kudo-list .kudo-marks-honey { background-image: url(../marks/honey.png); }
+.kudo-list .kudo-marks-made-my-day { background-image: url(../marks/made-my-day.png); }
+.kudo-list .kudo-marks-outstanding { background-image: url(../marks/outstanding.png); }
+.kudo-list .kudo-marks-spirit-ribbon { background-image: url(../marks/spirit-ribbon.png); }
+.kudo-list .kudo-marks-thanks { background-image: url(../marks/thanks.png); }
+.kudo-list .kudo-marks-thumbs-up { background-image: url(../marks/thumbs-up.png); }
+.kudo-list .kudo-marks-trophy { background-image: url(../marks/trophy.png); }
+
+@media (max-width: 989px) {
+	.kudos,
+	.widget_cahnrs_kudos_sidebar {
+		float: none;
+		padding: 0 2em 1em 2em;
+		width: 100%;
+	}
+	.kudos {
+		margin: 0;
+		padding-top: 2em;
+	}
+	.kudo-list {
+		margin: 0;
+	}
+}

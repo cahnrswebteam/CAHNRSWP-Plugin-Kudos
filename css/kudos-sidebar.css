@@ -1,0 +1,19 @@
+.give-kudos {
+	background: url(../images/action-bg.png) top right no-repeat;
+	border-radius: 1px;
+	color: #fff;
+	clear: both;
+	display: block;
+	line-height: 42px;
+	margin-bottom: 1.5rem;
+	padding: 0 21px;
+	padding: 0 2em 0 1em;
+	white-space: nowrap;
+}
+.give-kudos:hover {
+	background-position: bottom right;
+	color: white;
+}
+.widget_cahnrs_kudos_sidebar ul li {
+	list-style: disc;
+}

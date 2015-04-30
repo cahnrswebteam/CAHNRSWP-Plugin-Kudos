@@ -1,0 +1,130 @@
+.cahnrs-kudos-banner {
+	display: block;
+	width: 100%;
+}
+.error {
+	color: #981e32;
+}
+#kudos-submission-form p:not(.submit) {
+	padding-left: 2rem;
+	padding-right: 2rem;
+}
+#kudos-submission-form input[type="text"],
+#kudos-submission-form input[type="email"],
+#kudos-submission-form input[type="submit"],
+#kudos-submission-form select {
+	border-radius: 1px;
+	width: 100%
+}
+.required {
+	color: #981e32;
+}
+.kudos-marks label {
+	cursor: pointer;
+	display: inline-block;
+	background-position: top left;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	height: 60px;
+	margin: 1rem;
+	width: 60px;
+}
+.kudos-marks input {
+	display: none;
+}
+.submit {
+	padding-top: 1em
+}
+#submit-kudo {
+	background: #981e32;
+	border: 0;
+	color: #fff;
+	font-size: 0.9rem;
+	font-weight: bold;
+	padding: 0.75em 1.5em;
+}
+#submit-kudo:hover {
+	background: #c60c30;
+}
+#submit-kudo:active {
+	background: #5e6a71;
+}
+
+/*
+.kudo-marks-apple { background-image: url(../marks/apple.png); }
+.kudo-marks-awesome { background-image: url(../marks/awesome.png); }
+.kudo-marks-badge { background-image: url(../marks/badge.png); }
+.kudo-marks-bee { background-image: url(../marks/bee.png); }
+.kudo-marks-bouquet { background-image: url(../marks/bouquet.png); }
+.kudo-marks-coug-spirit { background-image: url(../marks/coug-spirit.png); }
+.kudo-marks-cougar-gold { background-image: url(../marks/cougar-gold.png); }
+.kudo-marks-cow { background-image: url(../marks/cow.png); }
+.kudo-marks-crown { background-image: url(../marks/crown.png); }
+.kudo-marks-fireworks { background-image: url(../marks/fireworks.png); }
+.kudo-marks-football { background-image: url(../marks/football.png); }
+.kudo-marks-gift { background-image: url(../marks/gift.png); }
+.kudo-marks-great-job { background-image: url(../marks/great-job.png); }
+.kudo-marks-honey { background-image: url(../marks/honey.png); }
+.kudo-marks-made-my-day { background-image: url(../marks/made-my-day.png); }
+.kudo-marks-number-one { background-image: url(../marks/number-one.png); }
+.kudo-marks-outstanding { background-image: url(../marks/outstanding.png); }
+.kudo-marks-spirit-ribbon { background-image: url(../marks/spirit-ribbon.png); }
+.kudo-marks-thanks { background-image: url(../marks/thanks.png); }
+.kudo-marks-thumbs-up { background-image: url(../marks/thumbs-up.png); }
+.kudo-marks-trophy { background-image: url(../marks/trophy.png); }
+.kudos-marks label {
+	filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+	filter: gray;
+	-webkit-filter: grayscale(100%);
+	-webkit-backface-visibility: hidden;
+}
+.kudos-marks label:hover,
+.kudos-marks input:checked + label {
+	filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
+	-webkit-filter: grayscale(0%);
+}
+*/
+
+.kudo-marks-apple { background-image: url(../marks/grayscale/apple.png); }
+.kudo-marks-awesome { background-image: url(../marks/grayscale/awesome.png); }
+.kudo-marks-badge { background-image: url(../marks/grayscale/badge.png); }
+.kudo-marks-bee { background-image: url(../marks/grayscale/bee.png); }
+.kudo-marks-bouquet { background-image: url(../marks/grayscale/bouquet.png); }
+.kudo-marks-coug-spirit { background-image: url(../marks/grayscale/coug-spirit.png); }
+.kudo-marks-cougar-gold { background-image: url(../marks/grayscale/cougar-gold.png); }
+.kudo-marks-cow { background-image: url(../marks/grayscale/cow.png); }
+.kudo-marks-crown { background-image: url(../marks/grayscale/crown.png); }
+.kudo-marks-fireworks { background-image: url(../marks/grayscale/fireworks.png); }
+.kudo-marks-football { background-image: url(../marks/grayscale/football.png); }
+.kudo-marks-gift { background-image: url(../marks/grayscale/gift.png); }
+.kudo-marks-great-job { background-image: url(../marks/grayscale/great-job.png); }
+.kudo-marks-honey { background-image: url(../marks/grayscale/honey.png); }
+.kudo-marks-made-my-day { background-image: url(../marks/grayscale/made-my-day.png); }
+.kudo-marks-number-one { background-image: url(../marks/grayscale/number-one.png); }
+.kudo-marks-outstanding { background-image: url(../marks/grayscale/outstanding.png); }
+.kudo-marks-spirit-ribbon { background-image: url(../marks/grayscale/spirit-ribbon.png); }
+.kudo-marks-thanks { background-image: url(../marks/grayscale/thanks.png); }
+.kudo-marks-thumbs-up { background-image: url(../marks/grayscale/thumbs-up.png); }
+.kudo-marks-trophy { background-image: url(../marks/grayscale/trophy.png); }
+
+.kudos-marks input:checked + .kudo-marks-apple, .kudo-marks-apple:hover { background-image: url(../marks/apple.png); }
+.kudos-marks input:checked + .kudo-marks-awesome, .kudo-marks-awesome:hover { background-image: url(../marks/awesome.png); }
+.kudos-marks input:checked + .kudo-marks-badge, .kudo-marks-badge:hover { background-image: url(../marks/badge.png); }
+.kudos-marks input:checked + .kudo-marks-bee, .kudo-marks-bee:hover { background-image: url(../marks/bee.png); }
+.kudos-marks input:checked + .kudo-marks-bouquet, .kudo-marks-bouquet:hover { background-image: url(../marks/bouquet.png); }
+.kudos-marks input:checked + .kudo-marks-coug-spirit, .kudo-marks-coug-spirit:hover { background-image: url(../marks/coug-spirit.png); }
+.kudos-marks input:checked + .kudo-marks-cougar-gold, .kudo-marks-cougar-gold:hover { background-image: url(../marks/cougar-gold.png); }
+.kudos-marks input:checked + .kudo-marks-cow, .kudo-marks-cow:hover { background-image: url(../marks/cow.png); }
+.kudos-marks input:checked + .kudo-marks-crown, .kudo-marks-crown:hover { background-image: url(../marks/crown.png); }
+.kudos-marks input:checked + .kudo-marks-fireworks, .kudo-marks-fireworks:hover { background-image: url(../marks/fireworks.png); }
+.kudos-marks input:checked + .kudo-marks-football, .kudo-marks-football:hover { background-image: url(../marks/football.png); }
+.kudos-marks input:checked + .kudo-marks-gift, .kudo-marks-gift:hover { background-image: url(../marks/gift.png); }
+.kudos-marks input:checked + .kudo-marks-great-job, .kudo-marks-great-job:hover { background-image: url(../marks/great-job.png); }
+.kudos-marks input:checked + .kudo-marks-honey, .kudo-marks-honey:hover { background-image: url(../marks/honey.png); }
+.kudos-marks input:checked + .kudo-marks-made-my-day, .kudo-marks-made-my-day:hover { background-image: url(../marks/made-my-day.png); }
+.kudos-marks input:checked + .kudo-marks-number-one, .kudo-marks-number-one:hover { background-image: url(../marks/number-one.png); }
+.kudos-marks input:checked + .kudo-marks-outstanding, .kudo-marks-outstanding:hover { background-image: url(../marks/outstanding.png); }
+.kudos-marks input:checked + .kudo-marks-spirit-ribbon, .kudo-marks-spirit-ribbon:hover { background-image: url(../marks/spirit-ribbon.png); }
+.kudos-marks input:checked + .kudo-marks-thanks, .kudo-marks-thanks:hover { background-image: url(../marks/thanks.png); }
+.kudos-marks input:checked + .kudo-marks-thumbs-up, .kudo-marks-thumbs-up:hover { background-image: url(../marks/thumbs-up.png); }
+.kudos-marks input:checked + .kudo-marks-trophy, .kudo-marks-trophy:hover { background-image: url(../marks/trophy.png); }
