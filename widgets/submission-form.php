@@ -43,9 +43,11 @@ class CAHNRS_Kudos_Submission_Widget extends WP_Widget {
 		?>
 		<form action="" method="post" id="kudos-submission-form">
 
-			<h2>Nominee information</h2>
+			<h2>CAHNRS Kudos Form</h2>
+			<p class="no-pad">Recognize a CAHNRS Employee! Quickly complete and submit the form below. Starred (*) items are required fields.</p>
+			<h3>Nominee information</h3>
 
-			<p><label for="kudo-nominee-name">Name <span class="required">*</span></label><br />
+			<p><label for="kudo-nominee-name">Name <span class="required">*</span> (or multiple names if a team effort)</label><br />
 			<input type="text" pattern="[a-zA-Z ]+" id="kudo-nominee-name" name="kudo-nominee-name" value="<?php echo ( isset( $_POST['kudo-nominee-name'] ) ? esc_attr( $_POST['kudo-nominee-name'] ) : '' ); ?>" /></p>
 
 			<p><label for="kudo-nominee-title">Title <span class="required">*</span></label><br />
@@ -54,13 +56,28 @@ class CAHNRS_Kudos_Submission_Widget extends WP_Widget {
 			<p><label for="kudo-nominee-dept">Department <span class="required">*</span></label><br />
 			<input type="text" pattern="[a-zA-Z ]+" id="kudo-nominee-dept" name="kudo-nominee-dept" value="<?php echo ( isset( $_POST['kudo-nominee-dept'] ) ? esc_attr( $_POST['kudo-nominee-dept'] ) : '' ); ?>" /></p>
 
-			<p><label for="kudo-nominee-email">Email <span class="required">*</span></label><br />
+			<p><label for="kudo-nominee-email">Email <span class="required">*</span> (or multiple emails separated by a comma)</label><br />
 			<input type="email" id="kudo-nominee-email" name="kudo-nominee-email" value="<?php echo ( isset( $_POST['kudo-nominee-email'] ) ? esc_attr( $_POST['kudo-nominee-email'] ) : '' ); ?>" /></p>
 
-			<p><label for="kudo-nominee-content">Please describe why you would like to recognize this person. <span class="required">*</span></label><br />
+			<p><label for="kudo-nominee-content">Tell us how your nominee earned this kudo! <span class="required">*</span></label><br />
 			<textarea id="kudo-nominee-content" name="kudo-nominee-content"><?php echo ( isset( $_POST['kudo-nominee-content'] ) ? stripslashes( wp_kses_post( $_POST['kudo-nominee-content'] ) ) : '' ); ?></textarea></p>
 
-			<p class="kudos-marks">Select an icon to show with this kudo.<br />
+			<p><label for="kudo-nominee-category">Categorize your Kudo: What prompted you to nominate this employee?</label><br />
+			<select id="kudo-nominee-category" name="kudo-nominee-category">
+				<option value="">Select</option>
+				<?php
+					$kudos_categories = get_terms( 'kudo_categories', 'hide_empty=0' );
+					if ( ! empty( $kudos_categories ) && ! is_wp_error( $kudos_categories ) ) :
+						foreach ( $kudos_categories as $kudos_category ) :
+						?>
+							<option value="<?php echo esc_attr( $kudos_category->term_id ); ?>"<?php echo ( isset( $_POST['kudo-nominee-category'] ) && esc_attr( $kudos_category->term_id ) === $_POST['kudo-nominee-category'] ? ' selected="selected"' : '' ); ?>><?php echo esc_html( $kudos_category->name ); ?></option>
+						<?php
+						endforeach;
+					endif;
+				?>
+			</select></p>
+
+			<p class="kudos-marks"><span style="font-size: 13px; font-weight: bold;">Add a picture to make your nominee smile.</span><br />
 			<?php
 				$kudos_marks = get_terms( 'kudo_marks', 'hide_empty=0' );
 				if ( ! empty( $kudos_marks ) && ! is_wp_error( $kudos_marks ) ) :
@@ -74,7 +91,7 @@ class CAHNRS_Kudos_Submission_Widget extends WP_Widget {
 			?>
 			</p>
 
-			<h2>Submitter information (that's you!)</h2>
+			<h3>Submitter information (that's you!)</h3>
 
 			<p><label for="kudo-submitter-name">Name <span class="required">*</span></label><br />
 				<input type="text" pattern="[a-zA-Z ]+" id="kudo-submitter-name" name="kudo-submitter-name" value="<?php echo ( isset( $_POST['kudo-submitter-name'] ) ? esc_attr( $_POST['kudo-submitter-name'] ) : '' ) ?>" /></p>
@@ -90,7 +107,7 @@ class CAHNRS_Kudos_Submission_Widget extends WP_Widget {
 
 			<p><label for="kudo-submitter-anonymous"><input type="checkbox" value="yes" id="kudo-submitter-anonymous" name="kudo-submitter-anonymous" /> Check this box if you would prefer this kudo to be anonymous.</label></p>
 
-			<p class="submit"><input type="submit" id="submit-kudo" name="submit" value="Submit Kudo!" /></p>
+			<p class="submit no-pad"><input type="submit" id="submit-kudo" name="submit" value="Submit Kudo!" /></p>
 
 		</form>
 		<?php
@@ -129,7 +146,7 @@ class CAHNRS_Kudos_Submission_Widget extends WP_Widget {
 			);
 			$post_id = wp_insert_post( $new_post, $wp_error );
 
-			//wp_set_object_terms( $post_id, (int) ( $nominee_category ), 'kudo_categories' );
+			wp_set_object_terms( $post_id, (int) ( $nominee_category ), 'kudo_categories' );
 			wp_set_object_terms( $post_id, (int) ( $nominee_mark ), 'kudo_marks' );
 			add_post_meta( $post_id, '_cahnrswp_kudo_nom_title', $nominee_title );
 			add_post_meta( $post_id, '_cahnrswp_kudo_nom_dept', $nominee_dept );

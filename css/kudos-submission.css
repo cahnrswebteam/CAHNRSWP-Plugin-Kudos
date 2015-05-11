@@ -5,7 +5,7 @@
 .error {
 	color: #981e32;
 }
-#kudos-submission-form p:not(.submit) {
+#kudos-submission-form p:not(.no-pad) {
 	padding-left: 2rem;
 	padding-right: 2rem;
 }
@@ -15,6 +15,9 @@
 #kudos-submission-form select {
 	border-radius: 1px;
 	width: 100%
+}
+#kudos-submission-form input[type="submit"] {
+	width: 33%;
 }
 .required {
 	color: #981e32;
@@ -91,3 +94,9 @@
 .kudos-marks input:checked + .kudo-marks-thanks, .kudo-marks-thanks:hover { background-image: url(../marks/thanks.png); }
 .kudos-marks input:checked + .kudo-marks-thumbs-up, .kudo-marks-thumbs-up:hover { background-image: url(../marks/thumbs-up.png); }
 .kudos-marks input:checked + .kudo-marks-trophy, .kudo-marks-trophy:hover { background-image: url(../marks/trophy.png); }
+
+@media only screen and (max-width:693px) {
+	#kudos-submission-form input[type="submit"] {
+		width: 100%;
+	}
+}

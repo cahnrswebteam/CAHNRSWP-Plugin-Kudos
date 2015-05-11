@@ -17,7 +17,7 @@
 						<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
         			<header class="article-header">
 								<hgroup>
-            			<h3 class="article-title"><?php the_title(); ?></h3>, <span><?php
+            			<h3 class="article-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h3>, <span><?php
             				echo get_the_date( 'F j' );
             				if ( 'yes' !== get_post_meta( get_the_ID(), '_cahnrswp_kudo_sub_anonymous', true ) ) {
 											echo ' | ' . 'Submitted by ' . $sub_name = get_post_meta( get_the_ID(), '_cahnrswp_kudo_sub_name', true );

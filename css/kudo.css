@@ -1,0 +1,16 @@
+.cahnrs-kudos-banner {
+	display: block;
+}
+.single-kudos .column.one article,
+.single-kudos .column.two aside {
+	background: rgba( 255, 255, 255, 0.9 );
+	padding: 2em;
+}
+.single-kudos h1.article-title {
+	color: #5e6a71;
+	text-shadow: none;
+}
+.single-kudos .column.one article .pagebuilder-item {
+	background: none;
+	padding: 0;
+}

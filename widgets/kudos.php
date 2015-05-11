@@ -48,8 +48,12 @@ class CAHNRS_Kudos_Widget extends WP_Widget {
 			echo '<ul class="kudo-list">';
 			while ( $kudos_query->have_posts() ) {
 				$kudos_query->the_post();
+				$category = wp_get_post_terms( $kudos_query->post->ID, 'kudo_categories', array( 'fields' => 'names' ) );
 				$mark = wp_get_post_terms( $kudos_query->post->ID, 'kudo_marks', array( 'fields' => 'slugs' ) );
-				echo '<li class="kudo-marks-' . $mark[0] . '"><strong>' . get_the_title() . '</strong>, ' . get_the_date( 'F j' );
+				echo '<li class="kudo-marks-' . $mark[0] . '"><strong><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></strong>, ' . get_the_date( 'F j' );
+				if ( $category ) {
+					echo ', ' . $category[0];
+				}
 				if ( 'yes' !== get_post_meta( $kudos_query->post->ID, '_cahnrswp_kudo_sub_anonymous', true ) ) {
 					echo ' | ' . 'Submitted by ' . $sub_name = get_post_meta( $kudos_query->post->ID, '_cahnrswp_kudo_sub_name', true );
 				}

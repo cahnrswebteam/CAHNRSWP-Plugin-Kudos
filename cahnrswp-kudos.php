@@ -20,12 +20,12 @@ class CAHNRSWP_Kudos {
 	var $cahnrs_kudos_post_type = 'kudos';
 
 	/**
-	 * @var string Taxonomy slug for Appointments.
+	 * @var string Taxonomy slug for kudo cagetories.
 	 */
 	var $cahnrs_kudos_categories = 'kudo_categories';
 
 	/**
-	 * @var string Taxonomy slug for Classifications.
+	 * @var string Taxonomy slug for kudo marks.
 	 */
 	var $cahnrs_kudos_marks = 'kudo_marks';
 
@@ -87,6 +87,7 @@ class CAHNRSWP_Kudos {
 				'author',
 			),
 			'taxonomies' => array(
+				$this->cahnrs_kudos_categories,
 				$this->cahnrs_kudos_marks,
 			),
 			'has_archive' => true,
@@ -99,24 +100,44 @@ class CAHNRSWP_Kudos {
 	 * Register Kudos taxonomies.
 	 */
 	public function register_kudos_taxonomies() {
-		$mark_args = array(
-			'labels'						=> array(
-				'name'					=> 'Marks',
-				'singular_name' => 'Mark',
-				'search_items'	=> 'Search Marks',
-				'all_items'		 => 'All Marks',
-				'edit_item'		 => 'Edit Mark',
-				'update_item'	 => 'Update Mark',
-				'add_new_item'	=> 'Add New Mark',
-				'new_item_name' => 'New Mark Name',
-				'menu_name'		 => 'Marks',
+		$category_args = array(
+			'labels'       => array(
+				'name'					=> 'Categories',
+				'singular_name' => 'Category',
+				'search_items'	=> 'Search Categories',
+				'all_items'		  => 'All Categories',
+				'edit_item'		  => 'Edit Category',
+				'update_item'	  => 'Update Category',
+				'add_new_item'	=> 'Add New Category',
+				'new_item_name' => 'New Category Name',
+				'menu_name'		  => 'Categories',
 			),
-			'description'			 => 'CAHNRS Kudos marks',
-			'public'						=> true,
-			'hierarchical'			=> true,
-			'show_ui'					 => true,
-			'show_in_menu'			=> true,
-			'query_var'				 => $this->cahnrs_kudos_marks,
+			'description'	 => 'CAHNRS Kudos categories',
+			'public'			 => true,
+			'hierarchical' => true,
+			'show_ui'			 => true,
+			'show_in_menu' => true,
+			'query_var'		 => $this->cahnrs_kudos_categories,
+		);
+		register_taxonomy( $this->cahnrs_kudos_categories, array( $this->cahnrs_kudos_post_type ), $category_args );
+		$mark_args = array(
+			'labels'       => array(
+				'name'          => 'Marks',
+				'singular_name' => 'Mark',
+				'search_items'  => 'Search Marks',
+				'all_items'     => 'All Marks',
+				'edit_item'     => 'Edit Mark',
+				'update_item'	  => 'Update Mark',
+				'add_new_item'  => 'Add New Mark',
+				'new_item_name' => 'New Mark Name',
+				'menu_name'     => 'Marks',
+			),
+			'description'  => 'CAHNRS Kudos marks',
+			'public'       => true,
+			'hierarchical' => true,
+			'show_ui'      => true,
+			'show_in_menu' => true,
+			'query_var'    => $this->cahnrs_kudos_marks,
 		);
 		register_taxonomy( $this->cahnrs_kudos_marks, array( $this->cahnrs_kudos_post_type ), $mark_args );
 	}
@@ -231,6 +252,9 @@ class CAHNRSWP_Kudos {
 	 * Add archive templates for the Kudos post type.
 	 */
 	public function template_include( $template ) {
+		if ( $this->cahnrs_kudos_post_type === get_post_type() ) {
+			$template = plugin_dir_path( __FILE__ ) . 'templates/single.php';
+		}
 		if ( is_post_type_archive( $this->cahnrs_kudos_post_type ) ) {
 			$template = plugin_dir_path( __FILE__ ) . 'templates/archive.php';
 		}
@@ -241,6 +265,9 @@ class CAHNRSWP_Kudos {
 	 * Enqueue the stylesheet used on Kudos archives.
 	 */
 	public function wp_enqueue_scripts() {
+		if ( $this->cahnrs_kudos_post_type === get_post_type() ) {
+			wp_enqueue_style( 'cahnrswp-kudo-style', plugins_url( 'css/kudo.css', __FILE__ ) );
+		}
 		if ( is_post_type_archive( $this->cahnrs_kudos_post_type ) ) {
 			wp_enqueue_style( 'cahnrswp-kudos-style', plugins_url( 'css/kudos.css', __FILE__ ) );
 		}
