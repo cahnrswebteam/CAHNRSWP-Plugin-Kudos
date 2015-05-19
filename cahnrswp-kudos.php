@@ -50,6 +50,7 @@ class CAHNRSWP_Kudos {
 		add_action( 'init', array( $this, 'register_kudos_taxonomies' ), 11 );
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ), 10, 2 );
 		add_action( 'save_post', array( $this, 'save_post' ), 10, 2 );
+		add_action( 'transition_post_status', array( $this, 'transition_post_status' ), 10, 3 );
 		add_action( 'widgets_init', array( $this, 'widgets_init' ) );
 		add_filter( 'template_include', array( $this, 'template_include' ), 1 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'wp_enqueue_scripts' ), 11 );
@@ -160,7 +161,7 @@ class CAHNRSWP_Kudos {
 	}
 
 	/**
-	 * Display a meta box used to show a person's "card".
+	 * Display a meta box used to show the kudo meta data.
 	 */
 	public function kudo_info_meta_box( $post ) {
 		wp_nonce_field( 'cahnrswp_kudo', 'cahnrswp_kudo_nonce' );
@@ -192,7 +193,7 @@ class CAHNRSWP_Kudos {
 		<p style="float: left; padding-left: 1%; width: 49%;"><label for="_cahnrswp_kudo_sub_email">Email</label><br />
 		<input type="text" id="_cahnrswp_kudo_sub_email" name="_cahnrswp_kudo_sub_email" value="<?php echo esc_attr( $sub_email ); ?>" class="widefat" /></p>
 		<br style="clear:both;" />
-    <p><label for="_cahnrswp_kudo_sub_anonymous"><input type="checkbox" value="yes" id="_cahnrswp_kudo_sub_anonymous" name="_cahnrswp_kudo_sub_anonymous" <?php checked( $sub_anon, 'yes' ); ?> /> Anonymous Submission</label></p>
+		<!--<p><label for="_cahnrswp_kudo_sub_anonymous"><input type="checkbox" value="yes" id="_cahnrswp_kudo_sub_anonymous" name="_cahnrswp_kudo_sub_anonymous" <?php checked( $sub_anon, 'yes' ); ?> /> Anonymous Submission</label></p>-->
 		<?php
 	}
 
@@ -221,13 +222,36 @@ class CAHNRSWP_Kudos {
 				delete_post_meta( $post_id, $field );
 			}
 		}
-
 		if ( isset( $_POST['_cahnrswp_kudo_sub_anonymous'] ) ) {
 			update_post_meta( $post_id, '_cahnrswp_kudo_sub_anonymous', 'yes' );
 		} else {
 			delete_post_meta( $post_id, '_cahnrswp_kudo_sub_anonymous' );
 		}
 
+	}
+
+	/**
+	 * Send an email to Kudo nominee when published.
+	 */
+	public function transition_post_status( $new_status, $old_status, $post ) {
+		if ( 'publish' !== $new_status or 'publish' === $old_status || $this->cahnrs_kudos_post_type !== get_post_type( $post ) ) {
+			return;
+		}
+		$to = get_post_meta( $post->ID, '_cahnrswp_kudo_nom_email', true );
+		$subject = 'You have been nominated for a kudo!';
+		$edit_link = admin_url( 'post.php?post=' . $post_id . '&action=edit' );
+		$message = 'A colleague has recognized your good work by sumbitting a CAHNRS Kudo. You can view it at ' . get_permalink( $post ) . '.';
+		//$headers = "From: " . get_post_meta( $post->ID, '_cahnrswp_kudo_sub_email', true ) . "\r\n";
+		add_filter( 'wp_mail_content_type', array( $this, 'set_html_content_type' ) );
+		wp_mail( $to, $subject, $message/*, $headers*/ );
+		remove_filter( 'wp_mail_content_type', array( $this, 'set_html_content_type' ) );
+	}
+
+	/**
+	 * Filter for sending HTML emails.
+	 */
+	public function set_html_content_type() {
+		return 'text/html';
 	}
 
 	/**

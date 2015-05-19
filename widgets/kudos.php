@@ -54,9 +54,9 @@ class CAHNRS_Kudos_Widget extends WP_Widget {
 				if ( $category ) {
 					echo ', ' . $category[0];
 				}
-				if ( 'yes' !== get_post_meta( $kudos_query->post->ID, '_cahnrswp_kudo_sub_anonymous', true ) ) {
-					echo ' | ' . 'Submitted by ' . $sub_name = get_post_meta( $kudos_query->post->ID, '_cahnrswp_kudo_sub_name', true );
-				}
+				//if ( 'yes' !== get_post_meta( $kudos_query->post->ID, '_cahnrswp_kudo_sub_anonymous', true ) ) {
+				echo ' | ' . 'Submitted by ' . $sub_name = get_post_meta( $kudos_query->post->ID, '_cahnrswp_kudo_sub_name', true );
+				//}
 				echo "<br />\n" . get_the_content() . '</li>';
 			}
 			echo '</ul>';

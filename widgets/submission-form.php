@@ -47,7 +47,7 @@ class CAHNRS_Kudos_Submission_Widget extends WP_Widget {
 			<p class="no-pad">Recognize a CAHNRS Employee! Quickly complete and submit the form below. Starred (*) items are required fields.</p>
 			<h3>Nominee information</h3>
 
-			<p><label for="kudo-nominee-name">Name <span class="required">*</span> (or multiple names if a team effort)</label><br />
+			<p><label for="kudo-nominee-name">Name <span class="required">*</span><!--(or multiple names if a team effort)--></label><br />
 			<input type="text" pattern="[a-zA-Z ]+" id="kudo-nominee-name" name="kudo-nominee-name" value="<?php echo ( isset( $_POST['kudo-nominee-name'] ) ? esc_attr( $_POST['kudo-nominee-name'] ) : '' ); ?>" /></p>
 
 			<p><label for="kudo-nominee-title">Title <span class="required">*</span></label><br />
@@ -56,7 +56,7 @@ class CAHNRS_Kudos_Submission_Widget extends WP_Widget {
 			<p><label for="kudo-nominee-dept">Department <span class="required">*</span></label><br />
 			<input type="text" pattern="[a-zA-Z ]+" id="kudo-nominee-dept" name="kudo-nominee-dept" value="<?php echo ( isset( $_POST['kudo-nominee-dept'] ) ? esc_attr( $_POST['kudo-nominee-dept'] ) : '' ); ?>" /></p>
 
-			<p><label for="kudo-nominee-email">Email <span class="required">*</span> (or multiple emails separated by a comma)</label><br />
+			<p><label for="kudo-nominee-email">Email <span class="required">*</span><!--(or multiple emails separated by a comma)--></label><br />
 			<input type="email" id="kudo-nominee-email" name="kudo-nominee-email" value="<?php echo ( isset( $_POST['kudo-nominee-email'] ) ? esc_attr( $_POST['kudo-nominee-email'] ) : '' ); ?>" /></p>
 
 			<p><label for="kudo-nominee-content">Tell us how your nominee earned this kudo! <span class="required">*</span></label><br />
@@ -105,7 +105,7 @@ class CAHNRS_Kudos_Submission_Widget extends WP_Widget {
 			<p><label for="kudo-submitter-email">Email <span class="required">*</span></label><br />
 			<input type="email" id="kudo-submitter-email" name="kudo-submitter-email" value="<?php echo ( isset( $_POST['kudo-submitter-email'] ) ? esc_attr( $_POST['kudo-submitter-email'] ) : '' ) ?>" /></p>
 
-			<p><label for="kudo-submitter-anonymous"><input type="checkbox" value="yes" id="kudo-submitter-anonymous" name="kudo-submitter-anonymous" /> Check this box if you would prefer this kudo to be anonymous.</label></p>
+			<!--<p><label for="kudo-submitter-anonymous"><input type="checkbox" value="yes" id="kudo-submitter-anonymous" name="kudo-submitter-anonymous" /> Check this box if you would prefer this kudo to be anonymous.</label></p>-->
 
 			<p class="submit no-pad"><input type="submit" id="submit-kudo" name="submit" value="Submit Kudo!" /></p>
 
@@ -155,7 +155,7 @@ class CAHNRS_Kudos_Submission_Widget extends WP_Widget {
 			add_post_meta( $post_id, '_cahnrswp_kudo_sub_title', $submitter_title );
 			add_post_meta( $post_id, '_cahnrswp_kudo_sub_dept', $submitter_dept );
 			add_post_meta( $post_id, '_cahnrswp_kudo_sub_email', $submitter_email );
-			if ( $_POST['kudo-submitter-anonymous'] ) { add_post_meta( $post_id, '_cahnrswp_kudo_sub_anonymous', 'yes' ); }
+			//if ( $_POST['kudo-submitter-anonymous'] ) { add_post_meta( $post_id, '_cahnrswp_kudo_sub_anonymous', 'yes' ); }
 
 			$to = $receiver;
 			$subject = $submitter_name . ' has submitted a kudo for ' . $nominee_name;
@@ -165,7 +165,7 @@ class CAHNRS_Kudos_Submission_Widget extends WP_Widget {
 
 			// If email has been processed for sending, display a success message.
 			add_filter( 'wp_mail_content_type', array( $this, 'set_html_content_type' ) );
-			if ( wp_mail( $to, $subject, $message, $headers ) ) {
+			if ( wp_mail( $to, $subject, $message/*, $headers*/ ) ) {
 				echo '<p><strong>Thank you for taking the time to recognize ' . esc_html( $nominee_name ) . '! Your submission will be reviewed and posted shortly.</strong></p>';
 			} else {
 				echo '<p class="error"><strong>An unexpected error occurred.<strong></p>';

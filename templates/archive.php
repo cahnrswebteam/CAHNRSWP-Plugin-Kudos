@@ -26,9 +26,9 @@
 										if ( $category ) {
 											echo ', ' . $category[0];
 										}
-            				if ( 'yes' !== get_post_meta( get_the_ID(), '_cahnrswp_kudo_sub_anonymous', true ) ) {
-											echo ' | ' . 'Submitted by ' . $sub_name = get_post_meta( get_the_ID(), '_cahnrswp_kudo_sub_name', true );
-										}
+            				//if ( 'yes' !== get_post_meta( get_the_ID(), '_cahnrswp_kudo_sub_anonymous', true ) ) {
+										echo ' | ' . 'Submitted by ' . $sub_name = get_post_meta( get_the_ID(), '_cahnrswp_kudo_sub_name', true );
+										//}
 									?></span>
     	      		</hgroup>
       	  		</header>
