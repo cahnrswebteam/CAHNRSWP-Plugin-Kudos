@@ -238,12 +238,11 @@ class CAHNRSWP_Kudos {
 			return;
 		}
 		$to = get_post_meta( $post->ID, '_cahnrswp_kudo_nom_email', true );
-		$subject = 'You have been nominated for a kudo!';
-		$edit_link = admin_url( 'post.php?post=' . $post_id . '&action=edit' );
-		$message = 'A colleague has recognized your good work by sumbitting a CAHNRS Kudo. You can view it at ' . get_permalink( $post ) . '.';
-		//$headers = "From: " . get_post_meta( $post->ID, '_cahnrswp_kudo_sub_email', true ) . "\r\n";
+		$subject = 'You have just received a CAHNRS Kudo!';
+		$message = '<p>Congratulations!</p><p>A colleague has recognized your good work by submitting a CAHNRS Kudo. See what they said at ' . get_permalink( $post ) . '.</p><p>Have a great day!</p>';
+		$headers = 'From: A CAHNRS Colleague <cahnrs.hr@wsu.edu>'. "\r\n";
 		add_filter( 'wp_mail_content_type', array( $this, 'set_html_content_type' ) );
-		wp_mail( $to, $subject, $message/*, $headers*/ );
+		wp_mail( $to, $subject, $message, $headers );
 		remove_filter( 'wp_mail_content_type', array( $this, 'set_html_content_type' ) );
 	}
 
